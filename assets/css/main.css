@@ -1,4 +1,39 @@
+.hidden {
+  display: none;
+}
+
+#ithaca_choice_body {
+  font-family: Oswald;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0px 50px;
+  width: 100%;
+  height: 100%;
+}
+#ithaca_choice_calendar {
+  display: block;
+  width: 60%;
+  height: 600px;
+  margin: 20px auto;
+  border: 0;
+}
 #ithaca_choice_map_canvas {
-  width: 500px;
+  width: 50%;
   height: 500px;
+  margin: 20px auto;
+}
+#ithaca_choice_add_event {
+  font-size: 2.5rem;
+  color: white;
+  background-color: #961105;
+  text-align: center;
+  padding: 5px;
+  margin: 20px 40%;
+}
+#ithaca_choice_add_event_form {
+  display: block;
+  width: 800px;
+  height: 600px;
+  margin: 20px auto;
+  border: 0;
 }

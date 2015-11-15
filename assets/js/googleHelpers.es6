@@ -5,7 +5,7 @@ const mapOptions = {
   mapTypeId: google.maps.MapTypeId.ROADMAP
 }
 
-let map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions)
+let map = new google.maps.Map(document.getElementById('ithaca_choice_map_canvas'), mapOptions)
 let GeoCoder = new google.maps.Geocoder()
 let infoWindow = new google.maps.InfoWindow()
 let bounds = new google.maps.LatLngBounds()
@@ -30,7 +30,7 @@ function createMarker (latLng, customHTML, summary) {
   })
 
   let contentString = '<div style=\'overflow-x:hidden;overflow-y:auto\'>'
-  contentString += description
+  contentString += customHTML
   contentString += '</div>'
 
   google.maps.event.addListener(marker, 'click', function() {

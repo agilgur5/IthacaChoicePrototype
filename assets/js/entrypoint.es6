@@ -29,13 +29,13 @@ function loadGoogleEvents (events) {
   require('js/googleHelpers.es6').default(events)
 }
 
+// reveal hidden form and scroll down to it
+document.getElementById('ithaca_choice_add_event').addEventListener('click', function(ev) {
+  document.getElementById('ithaca_choice_add_event_hidden_form').className = ''
+  document.getElementById('ithaca_choice_add_event_form').scrollIntoView()
+})
+
 function addMarker(lat, lng, db_string, title, listing_id) {
-  var position = new google.maps.LatLng(lat, lng);
-  
-  var infoWindow = new google.maps.InfoWindow({
-    content: contentString,
-  })
-  
   //For future reference, how to customize pins
   //var pinColor = 'FE7569';
   //var pinImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + pinColor,
@@ -53,40 +53,5 @@ function addMarker(lat, lng, db_string, title, listing_id) {
     map: map,
     title: title
   })
-  
-  google.maps.event.addListener(marker, 'click', function() {
-    if (current_window != null){
-      current_window.close();
-    }
-    current_window = infoWindow;
-    current_window.open(map,marker);
-  })
-  
-  // $('#'+listing_id).click(function(){
-  //   var elem = document.getElementsByClassName('current');
-    
-  //   if (elem[0] != null)
-  //   { // if already clicked on then open the details page
-  //     if (this === elem[0])
-  //     { 
-  //       this.href = '/listings/' + listing_id;
-  //       window.location = this.href;
-  //       return false;
-  //     }
-  //     // otherwise remove current and toggle with current
-  //     else
-  //     {
-  //       $(elem[0]).removeClass('current');
-  //     }
-  //   }
-
-  //   $(this).addClass('current');
-    
-  //   if (current_window != null){
-  //     current_window.close();
-  //   }
-  //   current_window = infoWindow;
-  //   current_window.open(map,marker);
-  // });
 }
 
