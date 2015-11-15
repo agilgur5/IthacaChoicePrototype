@@ -1,0 +1,6 @@
+frontend:
+  build: .
+  volumes:
+    - ./assets:/code
+  command:
+    - bash

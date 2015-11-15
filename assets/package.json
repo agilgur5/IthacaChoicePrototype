@@ -1,0 +1,32 @@
+{
+  "name": "ithaca-choice-prototype",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/entrypoint.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "node ./node_modules/webpack/bin/webpack.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agilgur5/IthacaChoiceRepository.git"
+  },
+  "author": "agilgur5",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agilgur5/IthacaChoicePrototype/issues"
+  },
+  "homepage": "https://github.com/agilgur5/IthacaChoiceRepository#readme",
+  "devDependencies": {
+    "babel-core": "^6.1.21",
+    "babel-loader": "^6.1.0",
+    "babel-preset-es2015": "^6.1.18",
+    "css-loader": "^0.23.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.6"
+  },
+  "dependencies": {
+    "es6-promise": "^3.0.2",
+    "isomorphic-fetch": "^2.2.0"
+  }
+}
