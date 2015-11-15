@@ -22,15 +22,30 @@ function geocodeAddress (address, callback) {
     }
   })
 }
-function createMarker (latLng, customHTML, summary) {
+function createMarker (latLng, description, summary, index) {
   let marker = new google.maps.Marker({
     position: new google.maps.LatLng(latLng.lat(), latLng.lng()),
     map: map,
     title: summary
   })
 
-  let contentString = '<div style=\'overflow-x:hidden;overflow-y:auto\'>'
-  contentString += customHTML
+  let contentString = '<div style=\'overflow-x: hidden;overflow-y:auto;\'>'
+  let braceArr = description.split('{')
+  console.log(braceArr)
+  if (braceArr.length > 1) {
+    let urls = JSON.parse('{' + braceArr[braceArr.length - 1]) // take last element
+    if (urls.imageURL) {
+      contentString += '<img src=\'' + urls.imageURL + '\' height=\'200\' />'
+      contentString += '<br />'
+    }
+    contentString += braceArr[0].split('\n').join('<br />')
+    if (urls.videoURL) {
+      contentString += '<video src=\'' + urls.videoURL + '\' height=\'200\' autoplay></video>'
+      contentString += '<br />'
+    }
+  } else {
+    contentString += braceArr[0].split('\n').join('<br />')
+  }
   contentString += '</div>'
 
   google.maps.event.addListener(marker, 'click', function() {
@@ -38,19 +53,22 @@ function createMarker (latLng, customHTML, summary) {
     infoWindow.open(map, marker);
   })
 
+  // edit calendar
+  //document.getElementsByClassName('event-description')[index].innerHTML = contentString
+
   bounds.extend(marker.position)
   map.fitBounds(bounds)
 }
 
 
 export default function (events) {
-  events.forEach(function(event) {
+  events.forEach(function(event, index) {
     geocodeAddress(event.location, (latLng) => {
       if (latLng == null) { 
         console.error('latLng was falsey')
         return
       } 
-      createMarker(latLng, event.description, event.summary)
+      createMarker(latLng, event.description, event.summary, index)
     })
   })
 }
