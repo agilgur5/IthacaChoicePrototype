@@ -1,6 +1,6 @@
 # LTLMoPWeb3D Specific
 .vagrant/
-build/
+#build/
 
 # Created by https://www.gitignore.io
 
